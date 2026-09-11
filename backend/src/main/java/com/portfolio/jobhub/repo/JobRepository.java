@@ -1,0 +1,2 @@
+package com.portfolio.jobhub.repo; import com.portfolio.jobhub.model.Job; import org.springframework.data.jpa.repository.JpaRepository; import org.springframework.data.jpa.repository.Query; import org.springframework.data.repository.query.Param; import java.util.*;
+public interface JobRepository extends JpaRepository<Job,Long>{ @Query("select j from Job j where lower(j.title) like lower(concat('%',:q,'%')) or lower(j.company) like lower(concat('%',:q,'%')) or lower(j.location) like lower(concat('%',:q,'%'))") List<Job> search(@Param("q") String q); }

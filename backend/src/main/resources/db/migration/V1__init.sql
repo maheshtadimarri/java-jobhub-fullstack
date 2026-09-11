@@ -1,0 +1,2 @@
+create table jobs (id bigserial primary key,title varchar(255) not null,company varchar(255) not null,location varchar(255) not null,description varchar(4000) not null,employment_type varchar(100) not null,created_at timestamp with time zone not null);
+create table applications (id bigserial primary key,job_id bigint not null references jobs(id),name varchar(255) not null,email varchar(255) not null,status varchar(50) not null,applied_at timestamp with time zone not null,unique(job_id,email));
